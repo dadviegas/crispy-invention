@@ -1,0 +1,14 @@
+{
+  "name": "react-bundle",
+  "version": "0.0.1",
+  "author": "dadviegas",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}

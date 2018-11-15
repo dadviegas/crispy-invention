@@ -1,5 +1,5 @@
 {
-  "name": "project-a",
+  "name": "client-app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "dadviegas",
@@ -11,6 +11,7 @@
     "build:all": "webpack --config=webpack.config.all.babel.js --profile"
   },
   "devDependencies": {
-    "webpack-conf": "0.0.1"
+    "webpack-conf": "0.0.1",
+    "react-bundle": "0.0.1"
   }
 }

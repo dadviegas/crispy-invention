@@ -1,3 +1,8 @@
-const arr = [1, 2, 3];
-const iAmJavascriptES6 = () => console.log(...arr);
-iAmJavascriptES6();
+import React from "react";
+import ReactDOM from "react-dom";
+
+const Index = () => {
+  return <div>Hello React!</div>;
+};
+
+ReactDOM.render(<Index />, document.getElementById("index"));

@@ -1,7 +1,7 @@
 import { createVariants } from 'parallel-webpack';
 import path from 'path';
 import packageJson from './package.json'
-import webpackConfiguration from './bundle';
+import webpackConfiguration from './webpackConf';
 
 var variants = {
   mode: ['development', 'production'],
