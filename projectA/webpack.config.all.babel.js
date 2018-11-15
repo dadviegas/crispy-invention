@@ -3,6 +3,10 @@ import path from 'path';
 import packageJson from './package.json'
 import webpackConfiguration from './bundle';
 
+var variants = {
+  mode: ['development', 'production'],
+};
+
 var baseOptions = {
   devTool: process.env.DEVTOOL || 'source-map',
   paths: {
@@ -12,9 +16,6 @@ var baseOptions = {
   version: packageJson.version,
 };
 
-export default (env, argv) => console.log(env, argv) || webpackConfiguration({
-  mode: 'development',
-  ...baseOptions,
-  ...env,
-  ...argv,
-});
+const createConfig = (options) => webpackConfiguration(options);
+
+export default createVariants(baseOptions, variants, createConfig);

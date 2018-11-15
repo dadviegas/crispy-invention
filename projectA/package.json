@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack",
-    "build": "webpack"
+    "build:dev": "webpack",
+    "build:production": "webpack --mode=production --env.country=pt",
+    "build:all": "webpack --config=webpack.config.all.babel.js --profile"
   },
   "devDependencies": {
     "webpack-conf": "0.0.1"
