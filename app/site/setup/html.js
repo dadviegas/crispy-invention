@@ -6,5 +6,12 @@ export default (options = {}) => new HtmlWebPackPlugin({
   inject: "body",
   title: "site",
   template: path.resolve(__dirname, '../assets/index.html'),
+  minify: {
+    html5: true,
+    removeComments: true,
+    collapseWhitespace: true,
+    preserveLineBreaks: true,
+    decodeEntities: true,
+  },
   ...options,
 });

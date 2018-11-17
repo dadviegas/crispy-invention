@@ -1,9 +1,8 @@
 import { createVariants } from 'parallel-webpack';
-import webpackConfiguration from './webpackConf';
-import path from 'path';
+import webpackConfiguration from './setup';
 
 var variants = {
-  mode: ['development', 'production'],
+  mode: ['production'],
 };
 
 const createConfig = (options) => webpackConfiguration((options));

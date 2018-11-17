@@ -6,13 +6,17 @@
   "author": "dadviegas",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf dist",
     "dev": "webpack",
-    "build:dev": "webpack",
-    "build:production": "webpack --mode=production --env.country=pt",
-    "build:all": "webpack --config=webpack.config.all.babel.js --profile"
+    "start": "webpack-dev-server --open --hot --inline",
+    "build:dev": "yarn clean & webpack",
+    "build:production": "yarn clean & webpack --mode=production --env.country=pt",
+    "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
+  },
+  "fependencies": {
+    "react-bundle": "0.0.1"
   },
   "devDependencies": {
-    "webpack-conf": "0.0.1",
-    "react-bundle": "0.0.1"
+    "webpack-conf": "0.0.2"
   }
 }

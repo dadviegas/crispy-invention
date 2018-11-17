@@ -1,6 +1,5 @@
-import babel from './babel';
-import htmlPlugin from './html';
-
+import getPlugins from './plugins';
+import getModules from './modules';
 import getParams from './params';
 
 export default (confOptions) => {
@@ -9,23 +8,21 @@ export default (confOptions) => {
   return {
     devtool: options.devTool,
     mode: options.mode,
-    module: {
-      rules: [
-        babel,
-      ],
-    },
+    module: getModules(options),
     output: {
       path: options.paths.dist,
-      filename: `[name].v${options.version}.${options.mode}.js`,
+      filename: `js/[name].v${options.version}.${options.mode}.js`,
     },
-    plugins: [
-      htmlPlugin(options.html),
-    ],
+    plugins: getPlugins(options),
     optimization: {
       splitChunks: {
           chunks: 'all',
       },
       runtimeChunk: true,
-    }
+      usedExports: true,
+    },
+    resolve: {
+      extensions: [".js", ".jsx", ".json"],
+    },
   }
 }

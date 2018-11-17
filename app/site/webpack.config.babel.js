@@ -1,7 +1,6 @@
-import { createVariants } from 'parallel-webpack';
-import webpackConfiguration from './webpackConf';
+import webpackConfiguration from './setup';
 
-export default (env, argv) => console.log(env, argv) || webpackConfiguration({
+export default (env, argv) => webpackConfiguration({
   mode: 'development',
   ...env,
   ...argv,

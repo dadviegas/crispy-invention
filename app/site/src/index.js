@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from './app';
 
-const Index = () => {
-  return <div>Hello React!</div>;
-};
+import '../styles/core.scss';
 
-ReactDOM.render(<Index />, document.getElementById("index"));
+const render = () => ReactDOM.render(<App />, document.getElementById("index"));
+
+module.hot && module.hot.accept('./app', () => setTimeout(render));
+
+render();
