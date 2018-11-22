@@ -8,15 +8,13 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "webpack",
-    "start": "webpack-dev-server --open --hot --inline",
+    "start": "webpack-dev-server --hot --inline --PS4 --env.test=1",
     "build:dev": "yarn clean & webpack",
     "build:production": "yarn clean & webpack --mode=production --env.country=pt",
     "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
   },
-  "fependencies": {
-    "react-bundle": "0.0.1"
-  },
-  "devDependencies": {
+  "dyarependencies": {
+    "react-bundle": "0.0.1",
     "webpack-conf": "0.0.2"
   }
 }
