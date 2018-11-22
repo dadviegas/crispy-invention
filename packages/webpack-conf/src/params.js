@@ -5,7 +5,7 @@ const getFolder = (folder = '') => path.resolve(process.cwd(), folder);
 
 const getSiteName = (config) => `${config.description} ${config.mode !== 'production' ? `- ${config.mode}` : ''}`
 
-export default (confOptions = {}) => ({
+export default (confOptions = {}, global = {}) => ({
   devTool: process.env.DEVTOOL || 'source-map',
   paths: {
     dist: getFolder('dist'),
@@ -18,4 +18,8 @@ export default (confOptions = {}) => ({
     title: getSiteName(confOptions) || 'App',
   },
   ...confOptions,
+  global: {
+    ...global,
+    ...confOptions.global,
+  },
 });
