@@ -1,3 +1,4 @@
+import merge from 'webpack-merge';
 import getPlugins from './plugins';
 import getModules from './modules';
 import getParams from './params';
@@ -18,13 +19,10 @@ export default (config) => {
 
   const options = getParams(config, global);
 
-  // logger.objLog('Define Variables', options.global)
-  // logger.objLog('Options', config)
-
+  logger.objLog('Define Variables', options.global)
   logger.objLog('Options', config)
-  logger.objLog('Options', options)
 
-  return {
+  return merge({
     devtool: options.devTool || 'source-map',
     mode: options.mode,
     module: getModules(options, options),
@@ -39,6 +37,5 @@ export default (config) => {
     resolve: {
       extensions: [".js", ".jsx", ".json"],
     },
-    ...config.webpack,
-  }
+  }, config.webpack);
 }
