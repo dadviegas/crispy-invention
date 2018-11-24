@@ -3,8 +3,7 @@ import getModules from './modules';
 import getParams from './params';
 import logger from './logger';
 
-export default (confOptions) => {
-  const { _, color, colors, infoVerbosity, $0, ...rest} = confOptions
+export default (config) => {
   var getRepoInfo = require('git-repo-info');
 
   // https://github.com/rwjblue/git-repo-info
@@ -17,20 +16,19 @@ export default (confOptions) => {
     sha: info.sha,
   };
 
-  const options = getParams(rest, global);
+  const options = getParams(config, global);
 
-  logger.objLog('Define Variables', options.global)
-  logger.objLog('Options', rest)
+  // logger.objLog('Define Variables', options.global)
+  // logger.objLog('Options', config)
+
+  logger.objLog('Options', config)
+  logger.objLog('Options', options)
 
   return {
-    devtool: options.devTool,
+    devtool: options.devTool || 'source-map',
     mode: options.mode,
-    module: getModules(options),
-    output: {
-      path: options.paths.dist,
-      filename: `js/[name].v${options.version}.${options.mode}.${info.abbreviatedSha}.js`,
-    },
-    plugins: getPlugins(options),
+    module: getModules(options, options),
+    plugins: getPlugins(config, options),
     optimization: {
       splitChunks: {
           chunks: 'all',
@@ -40,6 +38,7 @@ export default (confOptions) => {
     },
     resolve: {
       extensions: [".js", ".jsx", ".json"],
-    }
+    },
+    ...config.webpack,
   }
 }

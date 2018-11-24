@@ -5,7 +5,6 @@ export default (options = {}) => new HtmlWebPackPlugin({
   filename: "./index.html",
   inject: "body",
   title: "site",
-  template: options.paths.htmlTemplate,
   minify: {
     html5: true,
     removeComments: true,
@@ -13,5 +12,5 @@ export default (options = {}) => new HtmlWebPackPlugin({
     preserveLineBreaks: true,
     decodeEntities: true,
   },
-  ...options.html,
+  ...options,
 });

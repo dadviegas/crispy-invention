@@ -1,25 +1,15 @@
-import path from 'path';
-import packageJson from '../package.json'
+const DEVELOPMENT = 'development';
+const PRODUCTION = 'production';
 
-const getFolder = (folder = '') => path.resolve(process.cwd(), folder);
-
-const getSiteName = (config) => `${config.description} ${config.mode !== 'production' ? `- ${config.mode}` : ''}`
+const defineVariables = (options) => ({
+  ENV: JSON.stringify(options.mode || DEVELOPMENT),
+  DEBUG: options.mode !== PRODUCTION,
+});
 
 export default (confOptions = {}, global = {}) => ({
-  devTool: process.env.DEVTOOL || 'source-map',
-  paths: {
-    dist: getFolder('dist'),
-    styles: getFolder('styles'),
-    htmlTemplate: getFolder('assets/index.html'),
-  },
-  name: confOptions.name,
-  version: confOptions.version,
-  html: {
-    title: getSiteName(confOptions) || 'App',
-  },
-  ...confOptions,
   global: {
-    ...global,
+    ...defineVariables(confOptions),
     ...confOptions.global,
+    ...global,
   },
 });

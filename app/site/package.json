@@ -8,8 +8,10 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "webpack",
-    "start": "webpack-dev-server --hot --inline --PS4 --env.test=1",
-    "build:dev": "yarn clean & webpack",
+    "start": "webpack-dev-server --hot --inline --mode=development",
+    "start:dev": "webpack-dev-server --hot --inline --mode=development",
+    "start:production": "webpack-dev-server --hot --inline --mode=production",
+    "build:dev": "yarn clean & webpack --mode=development",
     "build:production": "yarn clean & webpack --mode=production --env.country=pt",
     "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
   },

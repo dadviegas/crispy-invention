@@ -3,8 +3,7 @@ import params from './setup/params';
 
 export default (env, argv) =>
   webpackConfiguration({
-    mode: 'development',
-    ...params,
+    ...params(env, argv),
     ...env,
     ...argv,
   });
