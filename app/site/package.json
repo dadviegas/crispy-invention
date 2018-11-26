@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "dev": "webpack",
     "start": "webpack-dev-server --hot --inline --mode=development",
-    "start:dev": "webpack-dev-server --hot --inline --mode=development",
+    "start:dev": "webpack-dev-server --hot --inline --mode=development --content-base=./assets",
     "start:production": "webpack-dev-server --hot --inline --mode=production",
     "build:dev": "yarn clean & webpack --mode=development",
     "build:production": "yarn clean & webpack --mode=production --env.country=pt",
