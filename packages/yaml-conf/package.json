@@ -1,0 +1,17 @@
+{
+  "name": "@dadv/yaml-config",
+  "version": "0.0.1",
+  "author": "dadviegas",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "postinstall": "yarn build"
+  },
+  "dependencies": {
+    "@dadv/babel-conf": "0.0.1",
+    "config-yml": "^0.10.2",
+    "deepmerge": "^2.2.1",
+    "yaml-configuration-loader": "^1.0.2"
+  }
+}

@@ -1,5 +1,5 @@
 import { createVariants } from 'parallel-webpack';
-import webpackConfiguration from './setup';
+import webpackConfiguration from '@dadv/webpack-conf';
 import params from './setup/params';
 
 var variants = {
@@ -8,4 +8,8 @@ var variants = {
 
 const createConfig = (options) => webpackConfiguration((options));
 
-export default createVariants({ ...params }, variants, createConfig);
+export default (env, argv) => createVariants({
+  ...params(env, argv),
+  ...env,
+  ...argv,
+}, variants, createConfig);

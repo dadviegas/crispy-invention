@@ -16,7 +16,8 @@
     "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
   },
   "dyarependencies": {
-    "react-bundle": "0.0.1",
-    "webpack-conf": "0.0.2"
+    "@dadv/react-bundle": "0.0.1",
+    "@dadv/webpack-conf": "0.0.2",
+    "@dadv/yaml-conf": "0.0.1"
   }
 }

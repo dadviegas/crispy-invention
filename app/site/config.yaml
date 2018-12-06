@@ -1,0 +1,20 @@
+default:
+  database:
+    host: 'localhost'
+    port: 27017
+
+development:
+  database:
+    db: 'dev_db'
+
+test:
+  database:
+    db: 'test_db'
+
+production:
+  database:
+    db: 'prod_db'
+    user: 'dbuser'
+    password: 'pass'
+  cache:
+    dir: 'static'

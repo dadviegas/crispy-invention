@@ -5,10 +5,10 @@ import getParams from './params';
 import logger from './logger';
 
 export default (config) => {
-  var getRepoInfo = require('git-repo-info');
+  const getRepoInfo = require('git-repo-info');
 
   // https://github.com/rwjblue/git-repo-info
-  var info = getRepoInfo();
+  const info = getRepoInfo();
   const global = {
     author: info.author,
     branch: info.branch,
@@ -20,7 +20,6 @@ export default (config) => {
   const options = getParams(config, global);
 
   logger.objLog('Define Variables', options.global)
-  logger.objLog('Options', config)
 
   return merge({
     devtool: options.devTool || 'source-map',
