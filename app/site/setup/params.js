@@ -20,7 +20,7 @@ export default (options = { mode: 'development' }) => ({
   webpack: {
     output: {
       path: getLocation('dist'),
-      filename: `../js/[name].${options.mode}.v${packageJson.version}.js`,
+      filename: `js/[name].${options.mode}.v${packageJson.version}.js`,
     },
   }
 });
