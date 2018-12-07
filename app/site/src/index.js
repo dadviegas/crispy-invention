@@ -1,10 +1,25 @@
+import '@babel/polyfill';
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from 'react-redux';
 import App from './app';
+import store from './config';
+
 import '../styles/core.scss';
 
-const render = () => ReactDOM.render(<App />, document.getElementById("root"));
+const node = (elementId) => document.getElementById(elementId);
 
-module.hot && module.hot.accept('./app', () => setTimeout(render));
+const render = (Component) => {
+  ReactDOM.render(
+    <Provider store={store}>
+        <Component />
+    </Provider>,
+    node('root'),
+  );
+};
 
-render();
+if (module.hot) {
+  module.hot.accept();
+}
+
+render(App);

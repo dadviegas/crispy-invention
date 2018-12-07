@@ -5,17 +5,7 @@ import {
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reduxSaga from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
-
-import {
-  routerReducer,
-  routerMiddleware,
-} from "react-router-redux";
-
-
-// Create a history of your choosing (we're using a browser history in this case)
-
-// Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history);
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 
 const flatten = (arr = []) => arr.reduce((flat, toFlatten) => flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);
 
@@ -40,18 +30,18 @@ const storeInit = (elements = []) => {
   const storeOptions = {
     reducers: {},
     sagas: [],
-    middlewares: [],
+    middlewares: [routerMiddleware(history)],
   };
 
   elements.forEach(element => {
     storeOptions.reducers = {
       ...storeOptions.reducers,
       ...element.reducers,
-      router: routerReducer
+      router: connectRouter(history)
     };
 
     storeOptions.sagas = storeOptions.sagas.concat(element.sagas);
-    storeOptions.middlewares = storeOptions.middlewares.concat(element.middlewares, middleware);
+    storeOptions.middlewares = storeOptions.middlewares.concat(element.middlewares);
   });
 
   return storeOptions;

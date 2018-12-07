@@ -1,9 +1,10 @@
 {
   "name": "@dadv/asgard-redux-helpers",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "./index.js",
   "author": "dadviegas",
   "license": "MIT",
+  "main": "./lib/index.js",
   "dependencies": {
     "@dadv/babel-conf": "0.0.1",
     "immutable": "^3.8.2",
@@ -15,7 +16,6 @@
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1"
   },
-  "sideEffects": false,
   "private": true,
   "scripts": {
     "build": "babel src --out-dir lib",

@@ -15,9 +15,13 @@
     "build": "yarn clean & webpack --mode=production --env.country=pt",
     "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
   },
-  "dyarependencies": {
+  "dependencies": {
     "@dadv/react-bundle": "0.0.1",
+    "@dadv/asgard-state-management": "0.0.1",
+    "@dadv/asgard-redux-helpers": "0.0.1"
+  },
+  "devDependencies": {
     "@dadv/webpack-conf": "0.0.2",
-    "@dadv/yaml-conf": "0.0.1"
+    "@dadv/yaml-config": "0.0.1"
   }
 }

@@ -4,8 +4,7 @@ import yamlConfig from '@dadv/yaml-config';
 
 const getLocation = (folder = '') => path.resolve(__dirname, folder);
 
-export default (options = {}) => ({
-  mode: options.mode,
+export default (options = { mode: 'development' }) => ({
   name: packageJson.name,
   version: packageJson.version,
   global: yamlConfig(getLocation('./config.yaml'), options.mode),
