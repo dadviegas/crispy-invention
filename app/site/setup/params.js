@@ -1,25 +1,26 @@
 import packageJson from '../package.json'
 import path from 'path';
-const getFolder = (folder = '') => path.resolve(__dirname, '..', folder);
+import yamlConfig from '@dadv/yaml-config';
 
-export default (options = {}) => ({
+const getLocation = (folder = '') => path.resolve(__dirname, folder);
+
+export default (options = { mode: 'development' }) => ({
   name: packageJson.name,
   version: packageJson.version,
-  global: {
-  },
+  global: yamlConfig(getLocation('./config.yaml'), options.mode),
   plugins: {
     html: {
-      template: getFolder('assets/index.html'),
+      template: getLocation('../assets/index.html'),
       title: packageJson.description,
     },
     css: {
-      styles: getFolder('styles'),
+      styles: getLocation('../styles'),
     },
   },
   webpack: {
     output: {
-      path: getFolder('dist'),
-      filename: `js/[name].${options.mode || 'development'}.v${packageJson.version}.js`,
+      path: getLocation('dist'),
+      filename: `../js/[name].${options.mode}.v${packageJson.version}.js`,
     },
   }
 });

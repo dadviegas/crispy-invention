@@ -12,6 +12,6 @@
     "@dadv/babel-conf": "0.0.1",
     "config-yml": "^0.10.2",
     "deepmerge": "^2.2.1",
-    "yaml-configuration-loader": "^1.0.2"
+    "js-yaml": "^3.12.0"
   }
 }
