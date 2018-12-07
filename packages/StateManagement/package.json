@@ -9,7 +9,7 @@
     "@dadv/asgard-redux-helpers": "0.0.0",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
-    "react-router-redux": "^5.0.0-alpha.9",
+    "connected-react-router": "^5.0.0",
     "redux-immutable": "^4.0.0",
     "reselect": "^3.0.1"
   },

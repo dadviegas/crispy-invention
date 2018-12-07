@@ -4,7 +4,8 @@ import yamlConfig from '@dadv/yaml-config';
 
 const getLocation = (folder = '') => path.resolve(__dirname, folder);
 
-export default (options = { mode: 'development' }) => ({
+export default (options = {}) => ({
+  mode: options.mode,
   name: packageJson.name,
   version: packageJson.version,
   global: yamlConfig(getLocation('./config.yaml'), options.mode),
@@ -19,7 +20,7 @@ export default (options = { mode: 'development' }) => ({
   },
   webpack: {
     output: {
-      path: getLocation('dist'),
+      path: getLocation('../dist'),
       filename: `js/[name].${options.mode}.v${packageJson.version}.js`,
     },
   }

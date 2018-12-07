@@ -12,7 +12,7 @@
     "start:dev": "webpack-dev-server --hot --inline --mode=development --content-base=./assets",
     "start:production": "webpack-dev-server --hot --inline --mode=production",
     "build:dev": "yarn clean & webpack --mode=development",
-    "build:production": "yarn clean & webpack --mode=production --env.country=pt",
+    "build": "yarn clean & webpack --mode=production --env.country=pt",
     "build:all": "yarn clean & webpack --config=webpack.config.all.babel.js --profile"
   },
   "dyarependencies": {
