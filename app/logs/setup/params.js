@@ -1,7 +1,7 @@
 import packageJson from '../package.json'
 import path from 'path';
 import yamlConfig from '@dadv/yaml-config';
-import { getLocalHttpAddress } from '@dadv/local-ip';
+import { getLocalIpAddress } from '@dadv/local-ip';
 
 const getLocation = (folder = '') => path.resolve(__dirname, folder);
 
@@ -9,7 +9,7 @@ export default (options = { mode: 'development' }) => ({
   name: packageJson.name,
   version: packageJson.version,
   global: {
-    debugServer: JSON.stringify(getLocalHttpAddress(2001)),
+    debugServer: JSON.stringify(getLocalIpAddress(2001)),
     ...yamlConfig(getLocation('./config.yaml'), options.mode)
   },
   plugins: {

@@ -10,3 +10,6 @@ const addresses = Object.keys(interfaces)
 const localIp = addresses[0];
 
 export default localIp;
+
+export const getLocalHttpAddress = (port) => `http://${localIp}:${port}`;
+export const getLocalIpAddress = (port) => `${localIp}:${port}`;

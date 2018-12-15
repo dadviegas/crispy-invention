@@ -20,6 +20,7 @@ export default (config) => {
   const options = getParams(config, global);
 
   logger.objLog('Define Variables', options.global)
+  logger.objLog('Define config', config)
 
   return merge({
     devtool: options.devTool || 'source-map',

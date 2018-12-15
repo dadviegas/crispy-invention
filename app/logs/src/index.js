@@ -7,15 +7,17 @@ import store from './config';
 
 import '../styles/core.scss';
 
-import Logger from '@dadv/log-notifier';
+import { initialize } from '@dadv/log-notifier';
+
+const dynamicLog = (data) => console[data.logLevel].call(this, data);
 
 if (debugServer) {
-  const logger = new Logger(debugServer);
-  logger.setDevice('mac');
-  logger.initialize();
-
-  fetch(`${debugServer}/api/logs/device/b4ceb468-6ca7-4a6e-bf31-0fc66de91093`).then((r) => r.json()).then((r) => console.info(r));
+  initialize(debugServer, {
+    actionCallback: dynamicLog,
+    eventCallback: dynamicLog,
+  });
 }
+
 
 const node = (elementId) => document.getElementById(elementId);
 
@@ -33,9 +35,3 @@ if (module.hot) {
 }
 
 render(App);
-
-console.log(1)
-console.info(1)
-console.debug(1)
-console.warn(1)
-console.error(1)

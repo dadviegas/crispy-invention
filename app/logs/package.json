@@ -1,6 +1,6 @@
 {
-  "name": "site",
-  "description": "Site app description",
+  "name": "logs",
+  "description": "Logs",
   "version": "1.0.0",
   "main": "index.js",
   "author": "dadviegas",
@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "webpack",
-    "start": "webpack-dev-server --hot --inline --mode=development --port=2002 --debugServer=true",
+    "start": "webpack-dev-server --hot --inline --mode=development --port=2003 --debugServer=true",
     "start:dev": "webpack-dev-server --hot --inline --mode=development --content-base=./assets",
     "start:production": "webpack-dev-server --hot --inline --mode=production",
     "build:dev": "yarn clean & webpack --mode=development",

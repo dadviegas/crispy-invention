@@ -1,0 +1,20 @@
+{
+  "name": "file-upload",
+  "version": "0.0.1",
+  "description": "file upload",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "upload": "babel-node ./src/upload.js",
+    "logs": "babel-node ./src/logs.js"
+  },
+  "dependencies": {
+    "@dadv/babel-conf": "0.0.1",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.5",
+    "express": "^4.14.0",
+    "jsonfile": "^5.0.0",
+    "multer": "^1.2.0",
+    "socket.io": "^2.2.0"
+  }
+}
