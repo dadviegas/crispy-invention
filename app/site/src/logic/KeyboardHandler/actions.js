@@ -1,6 +1,6 @@
-import { actionsObjectCreator } from '@dadv/asgard-redux-helpers';
+import { actionsObjectCreator } from '@asgard/redux-helpers';
 
-const prefix = 'asgard-keyboard-handler/';
+const prefix = 'keyboard-handler/';
 
 const rawConstants = [
  { name: 'CLEAR_KEY', functionName: 'clearKey',  prefix },

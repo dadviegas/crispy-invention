@@ -1,12 +1,12 @@
 {
-  "name": "@dadv/asgard-state-management",
+  "name": "@asgard/state-management",
   "version": "0.0.1",
   "main": "./lib/index.js",
   "author": "dadviegas",
   "license": "MIT",
   "dependencies": {
-    "@dadv/asgard-redux-helpers": "0.0.1",
-    "@dadv/babel-conf": "0.0.1",
+    "@asgard/redux-helpers": "0.0.1",
+    "@asgard/babel-conf": "0.0.1",
     "connected-react-router": "^5.0.0",
     "history": "^4.7.2",
     "immutable": "^3.8.2",

@@ -1,11 +1,11 @@
 {
-  "name": "@dadv/log-notifier",
+  "name": "@asgard/log-notifier",
   "version": "0.0.1",
   "main": "./lib/index.js",
   "author": "dadviegas",
   "license": "MIT",
   "dependencies": {
-    "@dadv/babel-conf": "0.0.1",
+    "@asgard/babel-conf": "0.0.1",
     "socket-io": "^1.0.0",
     "ua-parser-js": "^0.7.19",
     "uuid": "^3.3.2"

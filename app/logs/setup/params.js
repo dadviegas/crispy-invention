@@ -1,7 +1,7 @@
 import packageJson from '../package.json'
 import path from 'path';
-import yamlConfig from '@dadv/yaml-config';
-import { getLocalIpAddress } from '@dadv/local-ip';
+import yamlConfig from '@asgard/yaml-config';
+import { getLocalIpAddress } from '@asgard/local-ip';
 
 const getLocation = (folder = '') => path.resolve(__dirname, folder);
 

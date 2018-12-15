@@ -1,5 +1,5 @@
 {
-  "name": "@dadv/local-ip",
+  "name": "@asgard/local-ip",
   "version": "0.0.1",
   "main": "./lib/index.js",
   "author": "dadviegas",
@@ -9,7 +9,7 @@
     "postinstall": "yarn build"
   },
   "dependencies": {
-    "@dadv/babel-conf": "0.0.1"
+    "@asgard/babel-conf": "0.0.1"
   },
   "private": true
 }

@@ -1,4 +1,4 @@
-import { logicCreator } from '@dadv/asgard-redux-helpers';
+import { logicCreator } from '@asgard/redux-helpers';
 import theme from './reducers';
 
 export default logicCreator({

@@ -1,12 +1,12 @@
 {
-  "name": "@dadv/asgard-redux-helpers",
+  "name": "@asgard/redux-helpers",
   "version": "0.0.1",
   "main": "./index.js",
   "author": "dadviegas",
   "license": "MIT",
   "main": "./lib/index.js",
   "dependencies": {
-    "@dadv/babel-conf": "0.0.1",
+    "@asgard/babel-conf": "0.0.1",
     "immutable": "^3.8.2",
     "is-plain-object": "^2.0.4",
     "react-redux": "^5.0.7",

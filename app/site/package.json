@@ -15,14 +15,14 @@
     "build": "yarn clean & webpack --mode=production --env.country=pt"
   },
   "dependencies": {
-    "@dadv/react-bundle": "0.0.1",
-    "@dadv/asgard-state-management": "0.0.1",
-    "@dadv/asgard-redux-helpers": "0.0.1"
+    "@asgard/react-bundle": "0.0.1",
+    "@asgard/state-management": "0.0.1",
+    "@asgard/redux-helpers": "0.0.1"
   },
   "devDependencies": {
-    "@dadv/log-notifier": "0.0.1",
-    "@dadv/webpack-conf": "0.0.2",
-    "@dadv/yaml-config": "0.0.1",
-    "@dadv/local-ip": "0.0.1"
+    "@asgard/log-notifier": "0.0.1",
+    "@asgard/webpack-conf": "0.0.2",
+    "@asgard/yaml-config": "0.0.1",
+    "@asgard/local-ip": "0.0.1"
   }
 }

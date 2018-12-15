@@ -1,6 +1,6 @@
-import { actionsObjectCreator } from '@dadv/asgard-redux-helpers';
+import { actionsObjectCreator } from '@asgard/redux-helpers';
 
-const prefix = 'asgard-navigation-handler/';
+const prefix = 'navigation-handler/';
 
 const rawConstants = [
  { name: 'SELECTED_AREA', functionName: 'selectedArea',  prefix },

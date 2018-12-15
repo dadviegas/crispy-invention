@@ -1,5 +1,5 @@
 {
-  "name": "@dadv/webpack-conf",
+  "name": "@asgard/webpack-conf",
   "version": "0.0.2",
   "main": "./lib/index.js",
   "author": "dadviegas",
@@ -9,7 +9,7 @@
     "postinstall": "yarn build"
   },
   "dependencies": {
-    "@dadv/babel-conf": "0.0.1",
+    "@asgard/babel-conf": "0.0.1",
     "autoprefixer": "^9.4.2",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^1.0.0",

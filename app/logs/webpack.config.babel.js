@@ -1,4 +1,4 @@
-import webpackConfiguration from '@dadv/webpack-conf';
+import webpackConfiguration from '@asgard/webpack-conf';
 import params from './setup/params';
 
 export default (env, argv) =>

@@ -1,4 +1,4 @@
-import { logicCreator } from '@dadv/asgard-redux-helpers';
+import { logicCreator } from '@asgard/redux-helpers';
 import navigation from './reducers';
 import saga from './sagas';
 

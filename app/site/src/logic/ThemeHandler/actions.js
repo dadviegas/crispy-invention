@@ -1,6 +1,6 @@
-import { actionsObjectCreator } from '@dadv/asgard-redux-helpers';
+import { actionsObjectCreator } from '@asgard/redux-helpers';
 
-const prefix = 'asgard-theme-handler/';
+const prefix = 'theme-handler/';
 
 const rawConstants = [
  { name: 'SET_THEME', functionName: 'setTheme',  prefix, callback: (name) => ({name}) },

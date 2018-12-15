@@ -7,7 +7,7 @@ import store from './config';
 
 import '../styles/core.scss';
 
-import { initialize } from '@dadv/log-notifier';
+import { initialize } from '@asgard/log-notifier';
 
 const dynamicLog = (data) => console[data.logLevel].call(this, data);
 
