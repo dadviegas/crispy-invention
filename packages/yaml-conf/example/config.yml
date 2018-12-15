@@ -1,2 +1,20 @@
-foo:
-  foobar : '1'
+default:
+  database:
+    host: test3
+    port: 27017
+
+development:
+  database:
+    db: test1
+
+test:
+  database:
+    db: test2
+
+production:
+  database:
+    db: test1
+    user: test2
+    password: pass
+  cache:
+    dir: static

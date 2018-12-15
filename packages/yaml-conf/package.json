@@ -6,11 +6,11 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
+    "start": "babel-node ./example",
     "postinstall": "yarn build"
   },
   "dependencies": {
     "@dadv/babel-conf": "0.0.1",
-    "config-yml": "^0.10.2",
     "deepmerge": "^2.2.1",
     "js-yaml": "^3.12.0"
   }
