@@ -6,23 +6,31 @@
   "author": "dadviegas",
   "license": "MIT",
   "scripts": {
+    "eslint": "eslint . ",
     "clean": "rimraf dist",
     "dev": "webpack",
-    "start": "webpack-dev-server --hot --inline --mode=development --port=2002 --debugServer=true",
-    "start:dev": "webpack-dev-server --hot --inline --mode=development --content-base=./assets",
-    "start:production": "webpack-dev-server --hot --inline --mode=production",
+    "start": "webpack-dev-server --hot --inline --env.mode=development --port=2003 --debugServer=true",
+    "start:dev": "webpack-dev-server --hot --inline --env.mode=development --content-base=./assets",
+    "start:production": "webpack-dev-server --hot --inline --env.mode=production",
     "build:dev": "yarn clean & webpack --mode=development",
-    "build": "yarn clean & webpack --mode=production --env.country=pt"
+    "build": "yarn clean & webpack --env.mode=production --env.country=pt"
   },
   "dependencies": {
-    "@asgard/react-bundle": "0.0.1",
     "@asgard/state-management": "0.0.1",
     "@asgard/redux-helpers": "0.0.1"
   },
   "devDependencies": {
+    "@asgard/react-bundle": "0.0.1",
+    "@asgard/es-lint": "0.0.1",
     "@asgard/log-notifier": "0.0.1",
-    "@asgard/webpack-conf": "0.0.2",
+    "@asgard/bundle-app": "0.0.2",
     "@asgard/yaml-config": "0.0.1",
     "@asgard/local-ip": "0.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "dist/",
+      "/node_modules/"
+    ]
   }
 }

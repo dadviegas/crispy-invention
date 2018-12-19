@@ -11,13 +11,12 @@ import { initialize } from '@asgard/log-notifier';
 
 const dynamicLog = (data) => console[data.logLevel].call(this, data);
 
-if (debugServer) {
-  initialize(debugServer, {
+if (IS_LOG_SERVER_ACTIVE) {
+  initialize(LOG_SERVER, {
     actionCallback: dynamicLog,
     eventCallback: dynamicLog,
   });
 }
-
 
 const node = (elementId) => document.getElementById(elementId);
 

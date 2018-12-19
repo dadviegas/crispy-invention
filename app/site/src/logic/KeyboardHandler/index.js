@@ -5,7 +5,7 @@ import saga from './sagas';
 
 export default logicCreator({
   reducers: { keyboardNavigation },
-  sagas: [saga]
+  sagas: [saga],
 });
 
 export * from './actions';

@@ -1,7 +1,9 @@
 const originalFetch = fetch;
 
-function debugFetch(url, options) {
-  return originalFetch(url, options)
+function debugFetch(url, options = {}) {
+  const request = originalFetch(url, options);
+
+  return request
     .then((response) => {
       const clone = response.clone();
       const headers = {};
@@ -9,7 +11,7 @@ function debugFetch(url, options) {
         headers[key] = val;
       });
 
-      return response.json().then((data) => {
+      return clone.json().then((data) => {
         console.debug('fetch', url, {
           request: {
             url,
@@ -23,11 +25,13 @@ function debugFetch(url, options) {
           },
         });
 
-        return clone;
+        return response;
       })
     })
    .catch(error => {
-     console.error('fetch', url, options, error);
+     console.error('fetch', {
+       url, options, error
+     });
      throw error;
    });
 }

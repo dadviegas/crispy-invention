@@ -18,7 +18,7 @@ const objLog = (key, obj) => {
   Object.entries(obj).forEach(entry => {
     let key = entry[0];
     let value = entry[1];
-    value && logger.debug(key, value);
+    value !==undefined && logger.debug(key, value);
   });
   logger.line();
 }
@@ -28,7 +28,7 @@ const logger = {
   log: applyColor('green'),
   debug: applyColor('yellow'),
   error: applyColor('red'),
-  line: () => log(`\n${chalk.yellow("--------------------------------------------------")}\n`),
+  line: () => log(`${chalk.yellow("--------------------------------------------------")}\n`),
   objLog,
 }
 

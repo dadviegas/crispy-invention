@@ -5,13 +5,12 @@ var variables = [
   { key: 'test2', value: '_test2_'},
 ];
 
-const a = config('./example/config.yml', 'test', variables);
-const b = config('./example/config.yml', 'development', variables);
-const c = config('./example/config.yml', 'production', variables);
-const d = config('./example/config.yml', 'production');
+const a = config({file: './example/config.yml', environment: 'development', transformOptions: variables });
+const b = config({file: './example/config.yml', environment: 'test', transformOptions: variables });
+const c = config({file: './example/config.yml', environment: 'production', transformOptions: variables });
+const d = config({file: './example/config.yml', environment: '1', transformOptions: variables });
 
 console.log(a);
 console.log(b);
 console.log(c);
-
 console.log(d);

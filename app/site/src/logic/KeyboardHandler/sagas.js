@@ -1,14 +1,13 @@
-import { eventChannel } from 'redux-saga';
-import { takeLatest, call, fork, put, take, race } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
+import {
+  call, fork, put, take, race,
+} from 'redux-saga/effects';
+import { delay, eventChannel } from 'redux-saga';
 
-import { constants, actions  } from './actions';
+import { constants, actions } from './actions';
 
 const KEYBOARD_DELAY_EVENT_SPEED = [150, 100, 50];
 const KEYBOARD_STEP = 2;
-const keyboardSpeedInterval = KEYBOARD_DELAY_EVENT_SPEED.map((value, index) => {
-  return (index + 1) * KEYBOARD_STEP;
-})
+const keyboardSpeedInterval = KEYBOARD_DELAY_EVENT_SPEED.map((value, index) => (index + 1) * KEYBOARD_STEP);
 
 let keyboardSpeedIndex = 0;
 let timesRunned = 0;
@@ -19,16 +18,18 @@ const serializeKeyEvent = (event, speed) => ({
   speed,
 });
 
-export const defineSpeed = (timesRunned) => {
+export const defineSpeed = (timesRunnedLocal) => {
   keyboardSpeedInterval.some((value, index) => {
-    if (timesRunned < value) {
+    if (timesRunnedLocal < value) {
       keyboardSpeedIndex = index;
       return true;
     }
-  })
-}
 
-export function* keyDownEvent () {
+    return false;
+  });
+};
+
+export function* keyDownEvent() {
   const keyDownChannel = yield call(keyEventHandler, 'keydown');
 
   while (true) {
@@ -38,7 +39,7 @@ export function* keyDownEvent () {
       speed: keyboardSpeedIndex,
     }));
 
-    defineSpeed(timesRunned++);
+    defineSpeed(timesRunned + 1);
 
     yield race({
       wait: call(delay, KEYBOARD_DELAY_EVENT_SPEED[keyboardSpeedIndex]),
@@ -47,7 +48,7 @@ export function* keyDownEvent () {
   }
 }
 
-export function* keyUpEvent () {
+export function* keyUpEvent() {
   const keyUpChannel = yield call(keyEventHandler, 'keyup');
 
   while (true) {
@@ -59,7 +60,7 @@ export function* keyUpEvent () {
   }
 }
 
-export function* keyEventHandler (eventName) {
+export function* keyEventHandler(eventName) {
   return eventChannel((emit) => {
     const listener = (event) => {
       emit(event);
@@ -75,7 +76,7 @@ export function* keyEventHandler (eventName) {
   });
 }
 
-export default function* init () {
+export default function* init() {
   yield fork(keyUpEvent);
   yield fork(keyDownEvent);
 }

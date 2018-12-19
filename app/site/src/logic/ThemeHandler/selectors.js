@@ -1,1 +1,1 @@
-export const getTheme = (state) => state.get('theme').get('name');
+export const getTheme = state => state.get('theme').get('name');

@@ -1,5 +1,6 @@
-import { constants } from './actions';
 import { Map } from 'immutable';
+
+import { constants } from './actions';
 
 const initialState = Map({
   name: 'Indigo',
@@ -13,4 +14,4 @@ export default function (state = initialState, { type, payload }) {
     default:
       return state;
   }
-};
+}

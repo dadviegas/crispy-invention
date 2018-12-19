@@ -2,8 +2,22 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import deepmerge from 'deepmerge';
 
-export default (yamlFile, environment = 'production', transformOptions = []) => {
-  const rawYaml = fs.readFileSync(yamlFile, 'utf8');
+const mergeMappedFields = (original, bundle = {}) => {
+  Object.keys(original).forEach((key) => {
+    if(bundle[key]) {
+      original[key] = bundle[key];
+    }
+  });
+
+  return original;
+}
+
+export default ({ file, environment, transformOptions = [], overrideConfig }) => {
+  if (!file) {
+    throw new Error('File undefined');
+  }
+
+  const rawYaml = fs.readFileSync(file, 'utf8');
   let transformedYmal = rawYaml;
 
   transformOptions.forEach((pair) => {
@@ -13,7 +27,11 @@ export default (yamlFile, environment = 'production', transformOptions = []) => 
   var result = yaml.safeLoad(transformedYmal);
 
   const defaultData = result['default'] || {};
-  const environmentData = result[environment] || {};
+  let  environmentData = {};
 
-  return deepmerge(defaultData, environmentData);
+  if (environment) {
+    environmentData = result[environment] || {};
+  }
+
+  return mergeMappedFields(deepmerge(defaultData, environmentData), overrideConfig);
 }

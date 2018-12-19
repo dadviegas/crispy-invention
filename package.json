@@ -9,7 +9,6 @@
     "packages/*",
     "buildPackages/*",
     "app/*",
-    "api/*",
-    "playground/*"
+    "api/*"
   ]
 }

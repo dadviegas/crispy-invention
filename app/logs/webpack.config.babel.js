@@ -1,9 +1,4 @@
-import webpackConfiguration from '@asgard/webpack-conf';
-import params from './setup/params';
+import bundleConfiguration from '@asgard/bundle-app';
+import params from './setup';
 
-export default (env, argv) =>
-  webpackConfiguration({
-    ...params(env, argv),
-    ...env,
-    ...argv,
-  });
+export default (env, args) => bundleConfiguration(params({ env, args }));

@@ -3,9 +3,12 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const babelConf = {
   test: /\.js$/,
   exclude: /node_modules/,
-  use: {
-    loader: "babel-loader",
-  },
+  use: [
+    'thread-loader',
+    {
+      loader: 'babel-loader',
+    },
+  ],
 };
 
 const cssConf = {
@@ -13,14 +16,17 @@ const cssConf = {
   resolve: { extensions: [".scss", ".css"] },
   use: [
     MiniCssExtractPlugin.loader,
+    'thread-loader',
     { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+    { loader: 'postcss-loader', query: { config: { path: 'postcss.config.js' } }},
     { loader: 'sass-loader', options: { sourceMap: true } },
   ],
 }
 
 const filesConf = {
-  test: /\.(png|jpg|gif)$/i,
+  test: /\.(svg|png|jpg|gif)$/i,
   use: [
+    'thread-loader',
     {
       loader: 'url-loader',
       options: {
@@ -32,10 +38,10 @@ const filesConf = {
   ],
 }
 
-export default (options) => ({
+export default (env, config) => ({
   rules: [
     babelConf,
-    cssConf,
+    config.plugins && config.plugins.css && cssConf,
     filesConf,
   ].filter(m => m),
 });

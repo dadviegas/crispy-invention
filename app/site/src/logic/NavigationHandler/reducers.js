@@ -1,7 +1,6 @@
-import { constants } from './actions';
 import { fromJS } from 'immutable';
 
-import { constants as navigationConstants, DIRECTION_KEYS } from '../KeyboardHandler'
+import { constants as navigationConstants, DIRECTION_KEYS } from '../KeyboardHandler';
 
 const NAVIGATION_TYPE = {
   RAIL: 'RAIL',
@@ -9,7 +8,7 @@ const NAVIGATION_TYPE = {
   HORIZONTAL: 'HORIZONTAL',
   VERTICAL: 'VERTICAL',
   NONE: 'NONE',
-}
+};
 
 const initialState = fromJS({
   selectedItem: {},
@@ -24,12 +23,12 @@ const initialState = fromJS({
     verticalVisibleElements: 2,
   },
   pagination: {
-    start:0,
+    start: 0,
     end: 0,
     totalSize: 0,
     pageSize: 0,
   },
-  context: {}
+  context: {},
 });
 
 export default function (state = initialState, { type, payload }) {
@@ -41,7 +40,7 @@ export default function (state = initialState, { type, payload }) {
       const position = {
         x: state.getIn(['position', 'x']),
         y: state.getIn(['position', 'y']),
-      }
+      };
 
       switch (payload.keyCode) {
         case DIRECTION_KEYS.UP: {
@@ -66,16 +65,17 @@ export default function (state = initialState, { type, payload }) {
           xOffset = 1;
           break;
         }
+        default:
       }
 
       return state.merge({
         position: {
           x: position.x + xOffset,
           y: position.y + yOffset,
-        }
+        },
       });
     }
     default:
       return state;
   }
-};
+}

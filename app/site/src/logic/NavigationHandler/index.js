@@ -4,7 +4,7 @@ import saga from './sagas';
 
 export default logicCreator({
   reducers: { navigation },
-  sagas: [saga]
+  sagas: [saga],
 });
 
 export * from './actions';

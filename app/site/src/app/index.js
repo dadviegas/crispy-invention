@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 const themes = ['royal', 'solidVault', 'fireWatch', 'servQuick', 'sunrise', 'mirage', 'stellar'];
 class App extends Component {
   state = {
-    theme: 'servQuick',
-    i: 0,
+    themeIndex: 0,
   }
-themes
+
   componentWillMount() {
   }
 
   render() {
-    return <section id="theme-background" className={this.state.theme}>Hello React!</section>;
+    const { themeIndex } = this.state;
+    return <section id="theme-background" className={themes[themeIndex]}>Hello React!</section>;
   }
-};
+}
 
 export default App;

@@ -1,41 +1,57 @@
 import merge from 'webpack-merge';
-import getPlugins from './plugins';
+import getRepoInfo from 'git-repo-info';
+
 import getModules from './modules';
-import getParams from './params';
+import getPlugins from './plugins';
 import logger from './logger';
+import snakeCase from 'snake-case';
 
-export default (config) => {
-  const getRepoInfo = require('git-repo-info');
+const info = getRepoInfo();
+const internalGlobal = {
+  GIT_AUTHOR: info.author,
+  GIT_BRANCH: info.branch,
+  GIT_ABBREVIATE_DSHA: info.abbreviatedSha,
+  GIT_SHA: info.sha,
+};
 
-  // https://github.com/rwjblue/git-repo-info
-  const info = getRepoInfo();
+const convertKey = (str) => snakeCase(str).toUpperCase();
+
+const convertKeys = (obj) => {
+  const defineVariables = {};
+  const variables = {};
+  Object.keys(obj).forEach((key) => {
+    const value = obj[key];
+    if (typeof value === 'string' || value instanceof String) {
+      defineVariables[convertKey(key)] = JSON.stringify(value);
+    } else {
+      defineVariables[convertKey(key)] = value;
+    }
+
+    variables[convertKey(key)] = value;
+  });
+
+  return {
+    defineVariables,
+    variables,
+  }
+}
+
+export default ({ env = {}, args = {}, webpackConf = {}, config = {} }) => {
   const global = {
-    author: info.author,
-    branch: info.branch,
-    commitMessage: info.commitMessage,
-    abbreviatedSha: info.abbreviatedSha,
-    sha: info.sha,
+    ...internalGlobal,
+    ...config.global,
+    ...args,
+  }
+  const converted = convertKeys(global);
+
+  const internalWebpackConf = {
+    mode: env.environment,
+    module: getModules(env, config),
+    plugins: getPlugins(env, config, converted.defineVariables),
   };
 
-  const options = getParams(config, global);
+  logger.objLog('Environment Variables', env);
+  logger.objLog('Define Variables', converted.variables);
 
-  logger.objLog('Define Variables', options.global)
-  logger.objLog('Define config', config)
-
-  return merge({
-    devtool: options.devTool || 'source-map',
-    mode: options.mode,
-    module: getModules(options, options),
-    plugins: getPlugins(config, options),
-    optimization: {
-      splitChunks: {
-          chunks: 'all',
-      },
-      runtimeChunk: true,
-      usedExports: true,
-    },
-    resolve: {
-      extensions: [".js", ".jsx", ".json"],
-    },
-  }, config.webpack);
-}
+  return merge(internalWebpackConf, webpackConf);
+};
