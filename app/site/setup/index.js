@@ -47,6 +47,7 @@ export default ({ env = {}, args }) => {
       },
     },
     webpackConf: {
+      devtool: 'none',
       output: {
         path: resolve('../dist'),
         filename: `js/[name].${env.mode}.v${packageJson.version}.js`,

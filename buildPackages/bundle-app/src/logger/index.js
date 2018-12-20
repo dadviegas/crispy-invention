@@ -28,7 +28,7 @@ const logger = {
   log: applyColor('green'),
   debug: applyColor('yellow'),
   error: applyColor('red'),
-  line: () => log(`${chalk.yellow("--------------------------------------------------")}\n`),
+  line: () => log(`${chalk.yellow("--------------------------------------------------")}`),
   objLog,
 }
 

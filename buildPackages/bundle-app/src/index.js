@@ -46,8 +46,19 @@ export default ({ env = {}, args = {}, webpackConf = {}, config = {} }) => {
 
   const internalWebpackConf = {
     mode: env.environment,
+    devtool: webpackConf.devTool || 'source-map',
     module: getModules(env, config),
     plugins: getPlugins(env, config, converted.defineVariables),
+    optimization: {
+      splitChunks: {
+          chunks: 'all',
+      },
+      runtimeChunk: true,
+      usedExports: true,
+    },
+    resolve: {
+      extensions: [".js", ".jsx", ".json"],
+    },
   };
 
   logger.objLog('Environment Variables', env);
