@@ -1,0 +1,17 @@
+default:
+  environment: development
+  debug: false
+
+development:
+  debug: true
+
+test:
+  environment: test
+
+production:
+  environment: production
+
+custom:
+  playground: true
+  environment: development
+  debug: true
