@@ -34,7 +34,7 @@ class App extends Component {
     return <section id="theme-background" className={themes[themeIndex % 6]}>
       <Wrapper>
         <Title>
-          Hello React!
+          test
         </Title>
       </Wrapper>
     </section>;

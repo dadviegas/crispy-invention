@@ -15,8 +15,8 @@ const ENVIRONMENT = {
 };
 
 const transformeOptions = [
-  { key: 'LOG_SERVER_IP', value: localIp },
-  { key: 'LOG_SERVER_PORT', value: 2001 },
+  { key: '${LOG_SERVER_IP}', value: localIp }, // eslint-disable-line
+  { key: '${LOG_SERVER_PORT}', value: 2001 }, // eslint-disable-line
 ];
 
 export default ({ env = {}, args }) => {
