@@ -2,19 +2,19 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { initialize } from '@asgard/log-notifier';
+
+import Logger from '@asgard/log-notifier';
+
 import App from './app';
 import store from './config';
-
 import '../styles/core.scss';
 
-const dynamicLog = data => console[data.logLevel].call(this, data);
-
 if (IS_LOG_SERVER_ACTIVE) {
-  initialize(LOG_SERVER, {
-    actionCallback: dynamicLog,
-    eventCallback: dynamicLog,
-  });
+  const logger = new Logger(LOG_SERVER);
+  logger.setDevice('mac');
+  logger.initialize();
+
+  fetch(`${LOG_SERVER}/api/logs/device/b4ceb468-6ca7-4a6e-bf31-0fc66de91093`, { a: 1 }).then(r => r.json()).then(r => console.info(r));
 }
 
 const node = elementId => document.getElementById(elementId);

@@ -1,7 +1,9 @@
-import packageJson from '../package.json'
+
 import path from 'path';
 import yamlConfig from '@asgard/yaml-config';
 import localIp from '@asgard/local-ip';
+
+import packageJson from '../package.json';
 
 export const resolve = (folder = '') => path.resolve(__dirname, folder);
 
@@ -10,7 +12,7 @@ const ENVIRONMENT = {
   TEST: 'test',
   DEVELOPMENT: 'development',
   CUSTOM: 'custom',
-}
+};
 
 const transformeOptions = [
   { key: '${LOG_SERVER_IP}', value: localIp }, // eslint-disable-line
@@ -18,7 +20,7 @@ const transformeOptions = [
 ];
 
 export default ({ env = {}, args }) => {
-  env.mode = env && env.mode || ENVIRONMENT.PRODUCTION;
+  env.mode = (env && env.mode) || ENVIRONMENT.PRODUCTION; // eslint-disable-line
   return {
     env: yamlConfig({
       file: resolve('./environment.yaml'),
@@ -45,6 +47,7 @@ export default ({ env = {}, args }) => {
       },
     },
     webpackConf: {
+      devtool: 'none',
       output: {
         path: resolve('../dist'),
         filename: `js/[name].${env.mode}.v${packageJson.version}.js`,
@@ -52,4 +55,4 @@ export default ({ env = {}, args }) => {
       stats: 'errors-only',
     },
   };
-}
+};

@@ -1,5 +1,5 @@
 {
-  "name": "site",
+  "name": "webapp",
   "description": "Site app description",
   "version": "1.0.0",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "eslint": "eslint . ",
     "clean": "rimraf dist",
     "dev": "webpack",
-    "start": "webpack-dev-server --hot --inline --env.mode=development --port=2003 --debugServer=true",
+    "start": "webpack-dev-server --hot --inline --env.mode=development --port=2004 --debugServer=true",
     "start:dev": "webpack-dev-server --hot --inline --env.mode=development --content-base=./assets",
     "start:production": "webpack-dev-server --hot --inline --env.mode=production",
     "build:dev": "yarn clean & webpack --mode=development",
