@@ -1,12 +1,15 @@
 @import './reset.scss';
 @import './theme.scss';
 @import './sizes.scss';
+@import './animations.scss';
 
 
 html, body {
   @extend .fullscreen;
   background: #333;
   color: white;
+
+  font: 300 3vh "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #root {

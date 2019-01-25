@@ -46,13 +46,11 @@ export default function (state = initialState, { type, payload }) {
         case DIRECTION_KEYS.UP: {
           if (position.y) {
             yOffset = -1;
-            xOffset = -position.x;
           }
           break;
         }
         case DIRECTION_KEYS.DOWN: {
           yOffset = 1;
-          xOffset = -position.x;
           break;
         }
         case DIRECTION_KEYS.LEFT: {

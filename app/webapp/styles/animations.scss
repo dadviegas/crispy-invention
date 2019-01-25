@@ -1,0 +1,6 @@
+.tracking-in-contract-bck{animation:tracking-in-contract-bck 5s cubic-bezier(.215,.61,.355,1.000) both;}
+@keyframes tracking-in-contract-bck{0%{letter-spacing:1em;-webkit-transform:translateZ(400px);transform:translateZ(400px);opacity:0}40%{opacity:.6}100%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}
+
+
+.tracking-in-contract-bck-bottom{animation:tracking-in-contract-bck-bottom 4s cubic-bezier(.215,.61,.355,1.000) both;}
+@keyframes tracking-in-contract-bck-bottom{0%{letter-spacing:1em;-webkit-transform:translateZ(400px) translateY(300px);transform:translateZ(400px) translateY(300px);opacity:0}40%{opacity:.6}100%{-webkit-transform:translateZ(0) translateY(0);transform:translateZ(0) translateY(0);opacity:1}}

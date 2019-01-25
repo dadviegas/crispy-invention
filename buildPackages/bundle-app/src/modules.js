@@ -11,17 +11,17 @@ const babelConf = {
   ],
 };
 
-const cssConf = {
+const cssConf = (env) => ({
   test   : /\.(scss|css)$/,
   resolve: { extensions: [".scss", ".css"] },
   use: [
-    MiniCssExtractPlugin.loader,
+    env.environment === 'production' ? MiniCssExtractPlugin.loader : "style-loader",
     'thread-loader',
-    { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+    { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1, module: true } },
     { loader: 'postcss-loader', query: { config: { path: 'postcss.config.js' } }},
     { loader: 'sass-loader', options: { sourceMap: true } },
   ],
-}
+});
 
 const filesConf = {
   test: /\.(svg|png|jpg|gif)$/i,
@@ -38,10 +38,10 @@ const filesConf = {
   ],
 }
 
-export default (env, config) => ({
+export default (env, config) => console.log({env, config})  || ({
   rules: [
     babelConf,
-    config.plugins && config.plugins.css && cssConf,
+    config.plugins && config.plugins.css && cssConf(env),
     filesConf,
   ].filter(m => m),
 });

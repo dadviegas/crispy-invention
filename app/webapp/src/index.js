@@ -13,8 +13,6 @@ if (IS_LOG_SERVER_ACTIVE) {
   const logger = new Logger(LOG_SERVER);
   logger.setDevice('mac');
   logger.initialize();
-
-  fetch(`${LOG_SERVER}/api/logs/device/b4ceb468-6ca7-4a6e-bf31-0fc66de91093`, { a: 1 }).then(r => r.json()).then(r => console.info(r));
 }
 
 const node = elementId => document.getElementById(elementId);

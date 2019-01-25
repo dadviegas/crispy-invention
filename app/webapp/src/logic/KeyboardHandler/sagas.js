@@ -5,7 +5,7 @@ import { delay, eventChannel } from 'redux-saga';
 
 import { constants, actions } from './actions';
 
-const KEYBOARD_DELAY_EVENT_SPEED = [150, 100, 50];
+const KEYBOARD_DELAY_EVENT_SPEED = [550, 300, 150];
 const KEYBOARD_STEP = 2;
 const keyboardSpeedInterval = KEYBOARD_DELAY_EVENT_SPEED.map((value, index) => (index + 1) * KEYBOARD_STEP);
 

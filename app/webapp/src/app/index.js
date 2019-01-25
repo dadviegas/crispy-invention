@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const themes = ['royal', 'solidVault', 'fireWatch', 'servQuick', 'sunrise', 'mirage', 'stellar'];
+const themes = ['sky-gradient-14', 'premium-dark', 'loon', 'fine', 'royal', 'solidVault', 'fireWatch', 'servQuick', 'sunrise', 'mirage', 'stellar'];
 
 // Create a Title component that'll render an <h1> tag with some styles
 const Title = styled.h1`
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
-  color: red;
+  font-style: italic;
+  font-weight: 400;
+`;
+
+const Title1 = styled.h1`
+  font-size: 1em;
+  text-align: center;
 `;
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
-  padding: 4em;
+  margin-top: 22%;
   background: transparent;
 `;
 class App extends Component {
   state = {
-    themeIndex: 0,
+    themeIndex: 4,
   }
 
   // componentWillMount() {
@@ -26,18 +32,21 @@ class App extends Component {
   //     this.setState({
   //       themeIndex: themeIndex + 1,
   //     });
-  //   }, 5000);
+  //   }, 2000);
   // }
 
   render() {
     const { themeIndex } = this.state;
-    return <section id="theme-background" className={themes[themeIndex % 6]}>
-      <Wrapper>
-        <Title>
-          test
-        </Title>
-      </Wrapper>
-    </section>;
+    return (
+      <section id="theme-background" className={themes[themeIndex % themes.length]}>
+        <Wrapper>
+          <Title className="tracking-in-contract-bck"> Crispy Invention </Title>
+          <Title1 className="tracking-in-contract-bck-bottom">
+            Do it today and do not wait for tomorow!
+          </Title1>
+        </Wrapper>
+      </section>
+    );
   }
 }
 

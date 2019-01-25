@@ -55,29 +55,22 @@
   background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+.fine {
+  background-color: #4d5dfb;
+	background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
 }
 
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+// https://webgradients.com/
+.loon {
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+  background-blend-mode: multiply,multiply;
 }
+
+.premium-dark {
+	background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+.sky-gradient-14 { background: linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%); }
 
 @keyframes Gradient {
 	0% {

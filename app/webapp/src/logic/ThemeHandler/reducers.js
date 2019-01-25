@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { constants } from './actions';
 
 const initialState = Map({
-  name: 'Indigo',
+  name: 'Fine',
 });
 
 export default function (state = initialState, { type, payload }) {

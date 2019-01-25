@@ -32,5 +32,9 @@
       "dist/",
       "/node_modules/"
     ]
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
