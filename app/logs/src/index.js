@@ -9,7 +9,7 @@ import store from './config';
 import '../styles/core.scss';
 
 const dynamicLog = data => console[data.logLevel].call(this, data);
-
+console.log('IS_LOG_SERVER_ACTIVE', IS_LOG_SERVER_ACTIVE)
 if (IS_LOG_SERVER_ACTIVE) {
   initialize(LOG_SERVER, {
     actionCallback: dynamicLog,
