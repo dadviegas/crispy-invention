@@ -1,18 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from 'react';
 
 const themes = ['royal', 'solidVault', 'fireWatch', 'servQuick', 'sunrise', 'mirage', 'stellar'];
-class App extends Component {
-  state = {
-    theme: 'servQuick',
-    i: 0,
-  }
-themes
-  componentWillMount() {
-  }
-
+class App extends PureComponent {
   render() {
-    return <section id="theme-background" className={this.state.theme}>logs</section>;
+    return <section id="theme-background" className={themes[0]}>logs</section>;
   }
-};
+}
 
 export default App;
