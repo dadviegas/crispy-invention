@@ -27,7 +27,7 @@ function Logger(serverUrl) {
       };
     }
 
-    const overideLogs = ['log', 'warn', 'error', 'debug', 'info'];
+    const overideLogs = ['log', 'error', 'debug', 'info']; //  'warn',
     overideLogs.forEach((element) => {
       console[element] = generic(element, console[element]); //eslint-disable-line
     });

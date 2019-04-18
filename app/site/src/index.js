@@ -14,7 +14,9 @@ if (IS_LOG_SERVER_ACTIVE) {
   logger.setDevice('mac');
   logger.initialize();
 
-  fetch(`${LOG_SERVER}/api/logs/device/b4ceb468-6ca7-4a6e-bf31-0fc66de91093`, { a: 1 }).then(r => r.json()).then(r => console.info(r));
+  setInterval(() => {
+    fetch(`${LOG_SERVER}/api/logs/device/b4ceb468-6ca7-4a6e-bf31-0fc66de91093`, { a: 1 }).then(r => r.json());
+  }, 13000);
 }
 
 const node = elementId => document.getElementById(elementId);

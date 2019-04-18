@@ -2,7 +2,7 @@ const originalFetch = fetch;
 
 function debugFetch(url, options = {}) {
   const request = originalFetch(url, options);
-
+  const startTime = Date.now();
   return request
     .then((response) => {
       const clone = response.clone();
@@ -12,7 +12,11 @@ function debugFetch(url, options = {}) {
       });
 
       return clone.json().then((data) => {
-        console.debug('fetch', url, {
+        const endTime = Date.now();
+        console.info('fetch', {
+          type: 'request',
+          startTime,
+          endTime,
           request: {
             url,
             ...options,
@@ -29,9 +33,18 @@ function debugFetch(url, options = {}) {
       })
     })
    .catch(error => {
-     console.error('fetch', {
-       url, options, error
+    const endTime = Date.now();
+     console.error('fetch error', {
+       type: 'request',
+       startTime,
+       endTime,
+       request: {
+        url,
+        ...options,
+       },
+       error,
      });
+
      throw error;
    });
 }

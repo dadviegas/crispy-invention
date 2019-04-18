@@ -1,6 +1,6 @@
 default:
   environment: development
-  debug: false
+  debug: true
 
 development:
   debug: true
