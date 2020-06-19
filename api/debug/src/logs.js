@@ -16,15 +16,28 @@ const getDate = () => {
   return `${date.toLocaleString()} | ${date.getMilliseconds()}ms`;
 }
 
-const appendToFile = (deviceId, obj) => {
-  const data = {
-    date: getDate(),
-    ...obj,
+const appendToFile = (deviceId, type, obj) => {
+  const { data, rest } = obj;
+
+  let dataParsed;
+
+  try {
+    dataParsed = JSON.parse(data);
+  } catch (ex) {
+    dataParsed = data;
   }
-  jsonfile.writeFile(jsonlogFile(deviceId), data, { flag: 'a' }, function (err) { // spaces: 2, 
+
+
+  const dataObj = {
+    type,
+    date: getDate(),
+    data: dataParsed,
+    ...rest,
+  }
+  jsonfile.writeFile(jsonlogFile(deviceId), dataObj, { flag: 'a' }, function (err) { // spaces: 2, 
     if (err) console.error(err)
   })
-  return data;
+  return dataObj;
 }
 
 function addHeaders(response) {
@@ -58,10 +71,10 @@ app.get('/api/logs/device/:id', (req, res) => {
 
 app.post("/api/log", (req, res) => {
   const { body } = req;
-  const { deviceId = 'logs', ...rest } = body;
+  const { deviceId = 'logs', type, ...rest } = body;
 
   if (Object.keys(body).length) {
-    const eventData = appendToFile(deviceId, rest);
+    const eventData = appendToFile(deviceId, type, rest);
     eventData.deviceId = deviceId;
     io.emit('event', eventData);
   }
@@ -77,3 +90,12 @@ const server = http.listen(serverPort, () => {
 });
 
 var io = sockertIo.listen(server, { origins: '*:*' });
+
+// example:
+// fetch(`${url}/api/log`, {
+//   method: 'POST',
+//   body: JSON.stringify({ type: '', data: {}}),
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
